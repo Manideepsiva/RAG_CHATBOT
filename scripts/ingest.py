@@ -63,7 +63,7 @@ def main() -> None:
 
     # 3. Save
     saved = retriever.save(args.index_dir)
-    logger.info("✅  Done in %.1fs — index saved to %s",
+    logger.info("Done in %.1fs — index saved to %s",
                 time.perf_counter() - t0, saved)
 
 
