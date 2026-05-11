@@ -1,0 +1,21 @@
+# Core
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-openai==0.1.25
+openai==1.51.0
+
+# Vector Store
+faiss-cpu==1.8.0
+
+# PDF Parsing
+pypdf==4.3.1
+
+# Environment
+python-dotenv==1.0.1
+
+# Optional: Streamlit UI
+streamlit==1.38.0
+
+# Dev / Testing
+pytest==8.3.3
+pytest-mock==3.14.0
