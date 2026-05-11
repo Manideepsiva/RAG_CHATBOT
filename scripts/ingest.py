@@ -18,7 +18,6 @@ import sys
 import time
 from pathlib import Path
 
-# Allow imports from project root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.chunker import PDFChunker
@@ -49,19 +48,19 @@ def main() -> None:
     args = parse_args()
     t0   = time.perf_counter()
 
-    # 1. Chunk
+
     kw      = {k: v for k, v in
                [("chunk_size", args.chunk_size), ("chunk_overlap", args.chunk_overlap)]
                if v is not None}
     chunks  = PDFChunker(**kw).load_and_split(args.pdf_dir)
     logger.info("Total chunks: %d", len(chunks))
 
-    # 2. Embed + index
+
     embedder  = EmbeddingGenerator()
     retriever = FAISSRetriever(embedder=embedder)
     retriever.build_index(chunks)
 
-    # 3. Save
+
     saved = retriever.save(args.index_dir)
     logger.info("Done in %.1fs — index saved to %s",
                 time.perf_counter() - t0, saved)
